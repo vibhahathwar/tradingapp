@@ -46,6 +46,7 @@ public class SignalServiceImpl implements SignalHandler{
 				algo.cancelTrades();
 				break;
 		}
+		algo.doAlgo();
 		
 		
 	}

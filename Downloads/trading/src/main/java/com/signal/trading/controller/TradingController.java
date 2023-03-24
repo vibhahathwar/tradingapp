@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.signal.trading.model.Success;
 import com.signal.trading.service.SignalServiceImpl;
 
@@ -26,16 +27,14 @@ public class TradingController {
 	
 	
 	@GetMapping("/trade")
-	public ResponseEntity<Success> signalCheck(@RequestParam("signal") @Positive int signal){
+	public ResponseEntity<?> signalCheck(@RequestParam("signal") @Positive int signal){
 		LOGGER.info("signal check method in Trading controller");
-		if(signal > 0) {
+		
 		signalService.handleSignal(signal);
-		return  new ResponseEntity<Success>(HttpStatus.OK);
-		}else {
-			Success success = new Success();
-			success.setMessage("please provide valid signal");
-			return new ResponseEntity<Success>(HttpStatus.BAD_REQUEST);
-		}
+		Success success = new Success();
+		success.setMessage("signal is successfully processed");
+		return  new ResponseEntity<Success>(success, null, HttpStatus.OK);
+		
 		
 	}
 
