@@ -15,4 +15,14 @@ Integration test is yet to finish.
 
 
 
+How to run application
+-----------------------
+
+mvn spring-boot:run
+or
+mvn clean install
+java -jar target/trading-0.0.1-SNAPSHOT.jar
+
+
+
 
